@@ -1,9 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-*/
-
 #ifndef __GAME_H__
 #define __GAME_H__
 

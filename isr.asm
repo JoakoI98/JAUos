@@ -1,9 +1,3 @@
-; ** por compatibilidad se omiten tildes **
-; ==============================================================================
-; TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-; ==============================================================================
-; definicion de rutinas de atencion de interrupciones
-
 %include "print.mac"
 
 BITS 32
@@ -17,9 +11,6 @@ extern pic_finish1
 ;; Sched
 extern sched_nextTask
 
-;;
-;; Definición de MACROS
-;; -------------------------------------------------------------------------- ;;
 
 %macro ISR 1
 global _isr%1
@@ -31,20 +22,20 @@ _isr%1:
 %endmacro
 
 
-;; Rutina de atención de las EXCEPCIONES
+;; Exceptions
 ;; -------------------------------------------------------------------------- ;;
 ISR 0
 
-;; Rutina de atención del RELOJ
+;; Clock
 ;; -------------------------------------------------------------------------- ;;
 
-;; Rutina de atención del TECLADO
+;; Keyboard
 ;; -------------------------------------------------------------------------- ;;
 
-;; Rutinas de atención de las SYSCALLS
+;; Syscalls
 ;; -------------------------------------------------------------------------- ;;
 
-;; Funciones Auxiliares
+;; Aux
 ;; -------------------------------------------------------------------------- ;;
 isrNumber:           dd 0x00000000
 isrClock:            db '|/-\'

@@ -1,10 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  definicion de la tabla de descriptores globales
-*/
-
 #ifndef __GDT_H__
 #define __GDT_H__
 

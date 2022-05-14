@@ -1,43 +1,38 @@
-; ** por compatibilidad se omiten tildes **
-; ==============================================================================
-; TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-; ==============================================================================
-; rutinas para habilitar y deshabilitar A20
+; Enable and disable A20
 
 BITS 16
 
 section .text
 
-enable_msg:  db 'Habilitando A20........'
+enable_msg:  db 'Enabling A20........'
 enable_len   equ $ - enable_msg
 
-disable_msg: db 'Desabilitando A20......'
+disable_msg: db 'Disabling A20......'
 disable_len  equ $ - disable_msg
 
-check_msg:   db 'Checkeando A20.........'
+check_msg:   db 'Checking A20.........'
 check_len    equ $ - check_msg
 
 ok_msg:      db 'OK!'
 ok_len       equ $ - ok_msg
 
-fail_msg:    db 'FALLO!'
+fail_msg:    db 'FAIL!'
 fail_len     equ $ - fail_msg
 
 contadorlineas: dw 0x0000
 
-; Imprime un string en la seccion especificada de la memoria de Video.
-; Solo funciona en modo Real.
+; Print string in real mode
 ;
 ; Parametros:
-;       %1      Mensaje
-;       %2      Longitud
+;       %1      Message
+;       %2      Length
 ;       %3      Color
-;       %4      FILA Si es 0xFFFF, no aumento lineas
-;       %5      COLUMNA
+;       %4      Row
+;       %5      Column
 %macro REAL_MODE_PRINT 5
     pusha
     push    es
-    mov     ax, 0xB800          ;segmento de video
+    mov     ax, 0xB800          ;Video segment
     mov     es, ax
     %if %4 <> dx
     mov     dx, %4
@@ -57,17 +52,17 @@ contadorlineas: dw 0x0000
     add     bx, dx
     shl     bx, 1
     %if %1 <> di
-    mov     di, %1          ;di = puntero al mensaje
+    mov     di, %1          
     %endif
     %if %2 <> cx
-    mov     cx, %2          ;cx = contador (longitud del mensaje)
+    mov     cx, %2          
     %endif
     %if %3 <> ah
-    mov     ah, %3          ;ah = color. 0x1A azul de fondo, verde brillante para el caracter
+    mov     ah, %3          
     %endif
         %%ciclo_cadena:
-        mov     al, [di]            ;al = caracter.
-        mov     [es:bx], ax         ;escribo en pantalla
+        mov     al, [di]            
+        mov     [es:bx], ax         
         add     bx, 2
         inc     di
         loop    %%ciclo_cadena

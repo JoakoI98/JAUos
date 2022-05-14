@@ -1,22 +1,15 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  definicion de las rutinas de atencion de interrupciones
-*/
-
 #ifndef __IDT_H__
 #define __IDT_H__
 
 #include "stdint.h"
 
-/* Struct de descriptor de IDT */
+/* IDT descriptor */
 typedef struct str_idt_descriptor {
     uint16_t idt_length;
     uint32_t idt_addr;
 } __attribute__((__packed__)) idt_descriptor;
 
-/* Struct de una entrada de la IDT */
+/* IDT emtry */
 typedef struct str_idt_entry_fld {
     uint16_t offset_0_15;
     uint16_t segsel;

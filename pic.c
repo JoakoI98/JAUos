@@ -1,10 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  funciones del controlador de interrupciones
-*/
-
 #include "pic.h"
 
 #define PIC1_PORT 0x20

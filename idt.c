@@ -1,10 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  definicion de las rutinas de atencion de interrupciones
-*/
-
 #include "defines.h"
 #include "idt.h"
 #include "isr.h"
@@ -18,10 +11,7 @@ idt_descriptor IDT_DESC = {
 };
 
 /*
-    La siguiente es una macro de EJEMPLO para ayudar a armar entradas de
-    interrupciones. Para usar, descomentar y completar CORRECTAMENTE los
-    atributos y el registro de segmento. Invocarla desde idt_inicializar() de
-    la siguiene manera:
+    MACRO EXAMPLE
 
     void idt_inicializar() {
         IDT_ENTRY(0);
@@ -41,5 +31,5 @@ idt_descriptor IDT_DESC = {
 
 
 void idt_init() {
-    // Excepciones
+    
 }

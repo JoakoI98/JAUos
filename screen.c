@@ -1,10 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  definicion de funciones del scheduler
-*/
-
 #include "screen.h"
 #include "colors.h"
 #include "i386.h"
@@ -14,35 +7,35 @@ void print(const char* text, uint32_t y, uint32_t x, uint8_t fg, uint8_t bg) {
     for (i = 0; text[i] != 0; i++) {
         screen_drawPixel(y,x,text[i],fg,bg);
         x++;
-        if (x == VIDEO_COLS) {
+        if (x == VIDEO_COLUMNS) {
             x = 0;
         }
     }
 }
 
-void print_dec(uint32_t numero, uint32_t size, uint32_t y, uint32_t x, uint8_t fg, uint8_t bg) {
+void print_dec(uint32_t number, uint32_t size, uint32_t y, uint32_t x, uint8_t fg, uint8_t bg) {
     uint32_t i;
-    uint8_t letras[16] = "0123456789";
+    uint8_t letters[16] = "0123456789";
 
     for(i = 0; i < size; i++) {
-        uint32_t resto  = numero % 10;
-        numero = numero / 10;
-        screen_drawPixel(y,x + size - i - 1,letras[resto],fg,bg);
+        uint32_t remainder  = number % 10;
+        number = number / 10;
+        screen_drawPixel(y,x + size - i - 1,letters[remainder],fg,bg);
     }
 }
 
-void print_hex(uint32_t numero, int32_t size, uint32_t y, uint32_t x, uint8_t fg, uint8_t bg) {
+void print_hex(uint32_t number, int32_t size, uint32_t y, uint32_t x, uint8_t fg, uint8_t bg) {
     int32_t i;
     uint8_t hexa[8];
-    uint8_t letras[16] = "0123456789ABCDEF";
-    hexa[0] = letras[ ( numero & 0x0000000F ) >> 0  ];
-    hexa[1] = letras[ ( numero & 0x000000F0 ) >> 4  ];
-    hexa[2] = letras[ ( numero & 0x00000F00 ) >> 8  ];
-    hexa[3] = letras[ ( numero & 0x0000F000 ) >> 12 ];
-    hexa[4] = letras[ ( numero & 0x000F0000 ) >> 16 ];
-    hexa[5] = letras[ ( numero & 0x00F00000 ) >> 20 ];
-    hexa[6] = letras[ ( numero & 0x0F000000 ) >> 24 ];
-    hexa[7] = letras[ ( numero & 0xF0000000 ) >> 28 ];
+    uint8_t letters[16] = "0123456789ABCDEF";
+    hexa[0] = letters[ ( number & 0x0000000F ) >> 0  ];
+    hexa[1] = letters[ ( number & 0x000000F0 ) >> 4  ];
+    hexa[2] = letters[ ( number & 0x00000F00 ) >> 8  ];
+    hexa[3] = letters[ ( number & 0x0000F000 ) >> 12 ];
+    hexa[4] = letters[ ( number & 0x000F0000 ) >> 16 ];
+    hexa[5] = letters[ ( number & 0x00F00000 ) >> 20 ];
+    hexa[6] = letters[ ( number & 0x0F000000 ) >> 24 ];
+    hexa[7] = letters[ ( number & 0xF0000000 ) >> 28 ];
     for(i = 0; i < size; i++) {
         screen_drawPixel(y, x + size - i - 1,hexa[i],fg,bg);
     }
@@ -56,7 +49,7 @@ void screen_drawBox(uint32_t fInit,
                     uint8_t color ) {
     uint8_t effectiveColor = color & 0b111;
     uint8_t attr = 0x80 | effectiveColor | (effectiveColor << 4);
-    ca (*p)[VIDEO_COLS] = (ca (*)[VIDEO_COLS]) VIDEO;
+    ca (*p)[VIDEO_COLUMNS] = (ca (*)[VIDEO_COLUMNS]) VIDEO;
     uint32_t f;
     uint32_t c;
     for (f = fInit; f < fInit+fSize; f++) {
@@ -75,7 +68,7 @@ void screen_drawPixel(uint32_t row,
     fg = fg & 0b1111;
     bg = bg & 0b111;
     uint8_t attr = 0x00 | fg | (bg << 4);
-    ca (*p)[VIDEO_COLS] = (ca (*)[VIDEO_COLS]) VIDEO;
+    ca (*p)[VIDEO_COLUMNS] = (ca (*)[VIDEO_COLUMNS]) VIDEO;
     p[row][column].c = character;
     p[row][column].a = attr;
 }

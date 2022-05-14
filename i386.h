@@ -1,10 +1,3 @@
-/* ** por compatibilidad se omiten tildes **
-================================================================================
- TRABAJO PRACTICO 3 - System Programming - ORGANIZACION DE COMPUTADOR II - FCEN
-================================================================================
-  rutinas comunes para lectura y escritura de registros desde C
-*/
-
 #ifndef __i386_H__
 #define __i386_H__
 
